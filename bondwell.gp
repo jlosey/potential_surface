@@ -1,5 +1,5 @@
-set terminal pdfcairo font "Times,12"
-set output "bond-welldepth.pdf"
+set terminal pngcairo font "Times,12"
+set output "bond-welldepth2.png"
 
 set style line 1 lc 1 pt 5 ps 0.5
 set style line 2 lc rgb "#3CB371" pt 7 ps 0.5

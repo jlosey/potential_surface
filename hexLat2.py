@@ -34,20 +34,25 @@ def myLoop(start, end, step):
         yield start
         start += step
 
-midbox = 1.0
+def constN(ind,midbox,minN,maxN):
+    while ind[0].size < minN or ind[0].size >maxN:
+        if ind[0].size < minN:
+            midbox = midbox + 0.05
+        if ind[0].size > maxN:
+            midbox = midbox - 0.05
+        ind = np.where((xlat >= xL2-midbox)\
+            &(xlat <= xL2+midbox)\
+            &(ylat >= yL2-midbox)\
+            &(ylat <= yL2+midbox))
+    return ind
+
+midbox = 10.0
 ind = np.where((xlat >= xL2-midbox)\
         &(xlat <= xL2+midbox)\
         &(ylat >= yL2-midbox)\
         &(ylat <= yL2+midbox))
-while ind[0].size < 16 or ind[0].size >25:
-    if ind[0].size < 16:
-        midbox = midbox + 0.05
-    if ind[0].size > 25:
-        midbox = midbox - 0.05
-    ind = np.where((xlat >= xL2-midbox)\
-        &(xlat <= xL2+midbox)\
-        &(ylat >= yL2-midbox)\
-        &(ylat <= yL2+midbox))
+
+#ind = constN(ind,midbox,16,25)
 
 midxmin = min(xlat[ind])
 midxmax = max(xlat[ind])
